@@ -1,0 +1,40 @@
+{
+    "name": "vivek-mistry/laravel-inventory-core",
+    "description": "Core stock & inventory engine for Laravel applications",
+    "keywords": [
+        "inventory", "invoice-inventory-core", "laravel-inventory", "php", "laravel"
+    ],
+    "homepage": "https://github.com/vivek-mistry/laravel-inventory-core",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vivek Mistry",
+            "email": "vickymistry1818@gmail.com",
+            "role" : "Certified Senior Laravel Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2||^8.3||^8.4||^8.5",
+        "illuminate/support": "^10|^11|^12",
+        "orchestra/testbench": "^10.0.0||^9.0.0",
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "VivekMistry\\InventoryCore\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "VivekMistry\\InventoryCore\\InventoryServiceProvider"
+            ],
+            "aliases": {
+                "Inventory": "VivekMistry\\InventoryCore\\Facades\\Inventory"
+            }
+        }
+    },
+    "type": "library",
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
