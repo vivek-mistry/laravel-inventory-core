@@ -24,7 +24,7 @@ use function putenv;
  *
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
-final readonly class PhpHandler
+final class PhpHandler
 {
     public function handle(Php $configuration): void
     {

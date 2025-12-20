@@ -29,9 +29,9 @@ use PHPUnit\TextUI\XmlConfiguration\Logging\Logging;
  *
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  *
- * @immutable
+ * @psalm-immutable
  */
-final readonly class DefaultConfiguration extends Configuration
+final class DefaultConfiguration extends Configuration
 {
     public static function create(): self
     {
@@ -53,20 +53,18 @@ final readonly class DefaultConfiguration extends Configuration
                 false,
                 false,
                 false,
-                [
-                    'functions' => [],
-                    'methods'   => [],
-                ],
-                false,
-                false,
                 false,
             ),
             new CodeCoverage(
+                null,
+                CodeCoverageFilterDirectoryCollection::fromArray([]),
+                FileCollection::fromArray([]),
+                CodeCoverageFilterDirectoryCollection::fromArray([]),
+                FileCollection::fromArray([]),
                 false,
                 true,
                 false,
                 false,
-                null,
                 null,
                 null,
                 null,
@@ -80,7 +78,6 @@ final readonly class DefaultConfiguration extends Configuration
                 GroupCollection::fromArray([]),
             ),
             new Logging(
-                null,
                 null,
                 null,
                 null,
@@ -102,6 +99,7 @@ final readonly class DefaultConfiguration extends Configuration
             new PHPUnit(
                 null,
                 true,
+                null,
                 80,
                 \PHPUnit\TextUI\Configuration\Configuration::COLOR_DEFAULT,
                 false,
@@ -115,10 +113,7 @@ final readonly class DefaultConfiguration extends Configuration
                 false,
                 false,
                 false,
-                false,
                 null,
-                [],
-                false,
                 false,
                 false,
                 false,
@@ -159,7 +154,6 @@ final readonly class DefaultConfiguration extends Configuration
                 false,
                 false,
                 100,
-                10,
             ),
             TestSuiteCollection::fromArray([]),
         );

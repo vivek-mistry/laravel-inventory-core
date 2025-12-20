@@ -10,6 +10,8 @@
 namespace PHPUnit\TextUI\Configuration;
 
 use function count;
+use function iterator_count;
+use Countable;
 use Iterator;
 
 /**
@@ -17,10 +19,10 @@ use Iterator;
  *
  * @template-implements Iterator<int, TestFile>
  */
-final class TestFileCollectionIterator implements Iterator
+final class TestFileCollectionIterator implements Countable, Iterator
 {
     /**
-     * @var list<TestFile>
+     * @psalm-var list<TestFile>
      */
     private readonly array $files;
     private int $position = 0;
@@ -28,6 +30,11 @@ final class TestFileCollectionIterator implements Iterator
     public function __construct(TestFileCollection $files)
     {
         $this->files = $files->asArray();
+    }
+
+    public function count(): int
+    {
+        return iterator_count($this);
     }
 
     public function rewind(): void

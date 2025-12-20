@@ -2,16 +2,19 @@
 
 namespace VivekMistry\InventoryCore\Traits;
 
-use Inventory;
+use VivekMistry\InventoryCore\Facades\Inventory;
+use VivekMistry\InventoryCore\Models\InventoryWarehouse;
 
 trait Stockable
 {
-    public function stock()
+    public function stock($warehouseId = null)
     {
+        $warehouseId ??= InventoryWarehouse::where('is_default', true)->value('id');
+
         return $this->morphOne(
-            \InventoryCore\Models\InventoryStock::class,
+            \VivekMistry\InventoryCore\Models\InventoryStock::class,
             'stockable'
-        );
+        )->where('warehouse_id', $warehouseId);
     }
 
     public function addStock(int $qty, $warehouseId = null, array $meta = [])
@@ -24,9 +27,15 @@ trait Stockable
         return Inventory::reduce($this, $qty, $meta);
     }
 
-    public function availableStock(): int
+    public function availableStock($warehouseId = null): int
     {
-        return Inventory::get($this);
+        $stock = $this->stock($warehouseId)->first();
+
+        if (! $stock) {
+            return 0;
+        }
+
+        return $stock->quantity - $stock->reserved_quantity;
     }
 
     public function reserveStock(int $qty, $warehouseId = null, array $meta = [])
@@ -39,8 +48,8 @@ trait Stockable
         return Inventory::release($this, $qty, $warehouseId, $meta);
     }
 
-    public function reservedStock(): int
+    public function reservedStock($warehouseId = null): int
     {
-        return $this->stock?->reserved_quantity ?? 0;
+        return $this->stock($warehouseId)->value('reserved_quantity') ?? 0;
     }
 }

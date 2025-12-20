@@ -10,6 +10,8 @@
 namespace PHPUnit\TextUI\Configuration;
 
 use function count;
+use function iterator_count;
+use Countable;
 use Iterator;
 
 /**
@@ -17,10 +19,10 @@ use Iterator;
  *
  * @template-implements Iterator<int, TestSuite>
  */
-final class TestSuiteCollectionIterator implements Iterator
+final class TestSuiteCollectionIterator implements Countable, Iterator
 {
     /**
-     * @var list<TestSuite>
+     * @psalm-var list<TestSuite>
      */
     private readonly array $testSuites;
     private int $position = 0;
@@ -28,6 +30,11 @@ final class TestSuiteCollectionIterator implements Iterator
     public function __construct(TestSuiteCollection $testSuites)
     {
         $this->testSuites = $testSuites->asArray();
+    }
+
+    public function count(): int
+    {
+        return iterator_count($this);
     }
 
     public function rewind(): void

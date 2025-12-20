@@ -17,11 +17,16 @@
         "php": "^8.2||^8.3||^8.4||^8.5",
         "illuminate/support": "^10|^11|^12",
         "orchestra/testbench": "^10.0.0||^9.0.0",
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "10.x"
     },
     "autoload": {
         "psr-4": {
             "VivekMistry\\InventoryCore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VivekMistry\\InventoryCore\\Tests\\": "tests/"
         }
     },
     "extra": {

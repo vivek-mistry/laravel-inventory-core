@@ -14,14 +14,14 @@ use function sprintf;
 use PHPUnit\Event\InvalidArgumentException;
 
 /**
- * @immutable
+ * @psalm-immutable
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise for PHPUnit
  */
-final readonly class Duration
+final class Duration
 {
-    private int $seconds;
-    private int $nanoseconds;
+    private readonly int $seconds;
+    private readonly int $nanoseconds;
 
     /**
      * @throws InvalidArgumentException

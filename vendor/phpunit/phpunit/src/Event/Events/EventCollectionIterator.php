@@ -20,7 +20,7 @@ use Iterator;
 final class EventCollectionIterator implements Iterator
 {
     /**
-     * @var list<Event>
+     * @psalm-var list<Event>
      */
     private readonly array $events;
     private int $position = 0;

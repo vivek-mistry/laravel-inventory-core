@@ -22,7 +22,7 @@ use Iterator;
 final class TestResultCollectionIterator implements Iterator
 {
     /**
-     * @var list<TestResult>
+     * @psalm-var list<TestResult>
      */
     private readonly array $testResults;
     private int $position = 0;

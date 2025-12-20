@@ -21,7 +21,7 @@ use IteratorAggregate;
 final class EventCollection implements Countable, IteratorAggregate
 {
     /**
-     * @var list<Event>
+     * @psalm-var list<Event>
      */
     private array $events = [];
 
@@ -33,7 +33,7 @@ final class EventCollection implements Countable, IteratorAggregate
     }
 
     /**
-     * @return list<Event>
+     * @psalm-return list<Event>
      */
     public function asArray(): array
     {
