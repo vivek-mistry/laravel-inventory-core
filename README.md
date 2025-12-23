@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/inventory_core.png" alt="Laravel Inventory Core" style="aspect-ratio: 16 / 9; object-fit: cover;">
+  <img src="docs/images/inventory_core.png" alt="Laravel Inventory Core" style="aspect-ratio: 16/9; object-fit: cover;">
 </p>
 ## 📦 Laravel Inventory Core
 
