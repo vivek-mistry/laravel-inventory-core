@@ -1,6 +1,7 @@
 <p align="center">
   <img src="docs/images/inventory_core.png" alt="Laravel Inventory Core"  width="80%">
 </p>
+
 ## 📦 Laravel Inventory Core
 
 A Headless Stock & Inventory Engine for Laravel
